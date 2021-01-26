@@ -1,0 +1,38 @@
+.modal_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    animation: showBackground .4s;
+}
+
+.modal_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 50%!important;
+    min-height: 300px;
+    animation: show .4s;
+}
+
+@keyframes show {
+    from {top:-50px;}
+    to {top:0;}
+}
+
+@keyframes showBackground {
+    from {opacity: 0}
+    to {opacity: 1}
+}
