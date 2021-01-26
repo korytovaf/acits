@@ -59,7 +59,7 @@ const Login = ({setIsAuth}) => {
         <div className="mt-3 text-danger text-center">{wrongErrorLogin}</div>
         <form className="card-body" onSubmit={submitHandler}>
           <div className={"mb-3"}>
-            <label htmlFor="titleLogin">Логин test_user_1</label>
+            <label htmlFor="titleLogin">Логин</label>
             <input
               type="text"
               className={!errLogin ? "form-control border border-danger" : "form-control"}
@@ -70,7 +70,7 @@ const Login = ({setIsAuth}) => {
             <div className="text-danger">{!errLogin ? "Поле не может быть пустым" : ""}</div>
           </div>
           <div className="mb-3 error">
-            <label htmlFor="password">Пароль user10000</label>
+            <label htmlFor="password">Пароль</label>
             <input
               type="password"
               className={!errPassword ? "form-control border border-danger" : "form-control"}
