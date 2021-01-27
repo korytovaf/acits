@@ -6,8 +6,8 @@ const Header = () => {
     <header>
       <nav className={"navbar navbar-light bg-light"}>
         <div className="container-fluid justify-content-start">
-          <Link className="navbar-brand" to={"/today"}>Сегодня</Link>
-          <Link className="navbar-brand" to={"/animals"}>Животные</Link>
+          <Link className="navbar-brand" to={"/acits/today"}>Сегодня</Link>
+          <Link className="navbar-brand" to={"/acits/animals"}>Животные</Link>
         </div>
       </nav>
     </header>

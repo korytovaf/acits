@@ -3,7 +3,7 @@ import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {
   Switch,
-  Route, Link,
+  Route,
 } from "react-router-dom";
 import Today from "./components/Today";
 import {Redirect} from "react-router";
@@ -17,16 +17,16 @@ function App({isAuth}) {
       {!isAuth
         ?
         <Switch>
-          <Route path={"/login"} component={Login}/>
-          <Redirect from={"/"} to={"/login"}/>
+          <Route path={"/acits/login"} component={Login}/>
+          <Redirect from={"/acits/"} to={"/acits/login"}/>
         </Switch>
         :
         <>
           <Header />
           <Switch>
-            <Route path={"/today"} component={Today}/>
-            <Route path={"/animals"} component={Animals}/>
-            <Redirect from={"/"} to={"/today"}/>
+            <Route path={"/acits/today"} component={Today}/>
+            <Route path={"/acits/animals"} component={Animals}/>
+            <Redirect from={"/acits/"} to={"/acits/today"}/>
           </Switch>
         </>
 
