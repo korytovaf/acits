@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Тестовое задание от ACTIS
 
-## Available Scripts
+Реализовать на React приложение, которое умеет показывать следующие страницы:
 
-In the project directory, you can run:
+/login - страница ввода логина и пароля (недоступная с авторизацией)
+/today - страница с животными, у которых есть назначения на сегодня (недоступная без авторизации)
+/animals - страница со всеми животными в приюте (недоступная без авторизации)
 
-### `yarn start`
+На сайте в хедере реализовать ссылки:
+Сегодня (/today)
+Животные (/animals)
+Если пользователь кликает на страницы Сегодня и Животные, и он не “авторизован/токен закончился” - перекидывать на страницу /login
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Форма входа (/login) принимает данные, введённые пользователем и отправляет на апи post запросом. Адрес запроса: "https://acits-api.herokuapp.com/api/token/". Для корректного ответа сервера, в этом запросе и последующих указать заголовок 'Content-Type': 'application/json'. Для авторизации в теле запроса должны быть такие данные:
+username: 'test_user_1',
+password: 'user10000'
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Если введены другие данные, то с апи придёт ошибка, тогда нужно вывести сообщение:
+Имя пользователя или пароль введены не верно
 
-### `yarn test`
+Если введены корректные данные, то из полученного с апи объекта достать токен (хранится под ключом "access") и сохранить его в localStorage, затем перебрасывать на страницу /today.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+В дальнейшем для всех остальных запросов на сервер использовать токен из localStorage. Отправляться он должен заголовком: Authorization: 'Bearer ' + token. Также в заголовках должен отправляться номер текущего приюта (1, в нашем случае), а именно: 'current-shelter': 1
 
-### `yarn build`
+На странице "Сегодня" вывести животных с назначениями на сегодня, полученных из get запроса по адресу "https://acits-api.herokuapp.com/api/v1/prescriptions/today/". Отобразить кличку животного и тип назначения (например, "Приём у врача").
+На странице "Животные" вывести всех животных из get запроса по адресу "https://acits-api.herokuapp.com/api/v1/animals/". Отобразить кличку, тип животного и подтип (породу).
+Всю информацию, полученную с апи, хранить в Redux Store.
+При нажатии на кличку животного на обеих страницах выше открывается модальное окно с карточкой животного. В карточке животного отобразить: кличка, рост, вес, возраст, тип, подтип.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Оформление (дизайн) — важно, чтобы соблюдался один шрифт, один и тот же набор цветов, стили написаны на scss (использовать css modules). Можно воспользоваться Bootstrap.
+Код оформить на GitHub обязательно с Read.me.
